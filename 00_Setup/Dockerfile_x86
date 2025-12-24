@@ -45,6 +45,14 @@ RUN mkdir -p /root/.jupyter && \
     echo "c.ServerApp.allow_root = True" >> /root/.jupyter/jupyter_server_config.py
 
 # ------------------------------------------------------------
+# Set the working directory
+# ------------------------------------------------------------
+RUN mkdir -p /wd
+
+# Set it as the default working directory
+WORKDIR /wd
+
+# ------------------------------------------------------------
 # JupyterLab config (optional)
 # ------------------------------------------------------------
 EXPOSE 8888
