@@ -30,13 +30,6 @@ RUN wget https://quarto.org/download/latest/quarto-linux-arm64.deb \
 
 
 # ------------------------------------------------------------
-# Install TinyTeX via Quarto (for PDF output)
-# ------------------------------------------------------------
-RUN quarto install tinytex && \
-    quarto check tinytex
-
-
-# ------------------------------------------------------------
 # Copy environment.yml (your TF-free env) into container
 # ------------------------------------------------------------
 COPY ../mlmiin26.yml /tmp/mlmiin26.yml
