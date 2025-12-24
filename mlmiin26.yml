@@ -1,0 +1,61 @@
+name: mlmiin
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Core Python
+  - python=3.11
+  - pip
+
+  # Jupyter ecosystem
+  - jupyterlab
+  - notebook
+  - ipykernel
+  - ipywidgets
+  - ipython
+
+  # Scientific stack
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - seaborn
+  - patsy
+  - networkx
+
+  # Machine learning / modeling
+  - scikit-learn
+  - statsmodels
+  - pmdarima
+  - sktime
+  - lightgbm
+  - optuna
+
+  # Utilities & helpers
+  - tqdm
+  - dill
+  - packaging
+  - yfinance
+
+  # Visualization / ML tooling
+  - yellowbrick
+
+  - pip:
+      # Wrappers / exporters
+      - scikeras
+      - sklearn2pmml
+
+      # Nixtlaverse (added even if not used in notebooks)
+      - nixtla
+      - statsforecast
+      - mlforecast
+      - neuralforecast
+      - utilsforecast
+
+      # Datasets
+      - rdatasets
+
+      # Standalone keras (OPTIONAL — remove if not needed)
+      # Needed only for notebooks that import `import keras` directly
+      - keras
