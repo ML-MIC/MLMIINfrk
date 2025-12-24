@@ -37,6 +37,13 @@ RUN conda env create -f /tmp/mlmiin26.yml && conda clean -afy
 ENV CONDA_DEFAULT_ENV=mlmiin
 ENV PATH=/opt/conda/envs/mlmiin/bin:$PATH
 
+# Configure Jupyter to have no token/password and listen on all interfaces
+RUN mkdir -p /root/.jupyter && \
+    echo "c.ServerApp.token = ''" >> /root/.jupyter/jupyter_server_config.py && \
+    echo "c.ServerApp.password = ''" >> /root/.jupyter/jupyter_server_config.py && \
+    echo 'c.ServerApp.ip = "0.0.0.0"' >> /root/.jupyter/jupyter_server_config.py && \
+    echo "c.ServerApp.allow_root = True" >> /root/.jupyter/jupyter_server_config.py
+
 # ------------------------------------------------------------
 # JupyterLab config (optional)
 # ------------------------------------------------------------
