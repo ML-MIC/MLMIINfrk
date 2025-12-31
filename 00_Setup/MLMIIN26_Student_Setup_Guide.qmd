@@ -500,6 +500,12 @@ For **every course session**, you will usually repeat these steps:
 
 <img src="./fig/VSCodeVersionControlIcon.png" width=20%/>
 
+<img src="./fig/VSCodeAddRemote01.png" width=70%/>
+
+<img src="./fig/VSCodeAddRemote02.png" width=90%/>
+
+<img src="./fig/VSCodeAddRemote03.png" width=90%/>
+
 
 
 ---
