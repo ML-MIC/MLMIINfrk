@@ -540,6 +540,18 @@ In the text field at the top, select `upstream` as shown below:
 
 <img src="./fig/VSCodePullUpstream02.png" width=90%/>
 
+and wait for the operation to complete. You will see a text field at the top left with 'Commit' under it.
+
+<img src="./fig/VSCodePullUpstream03.png" width=90%/>
+
+Enter `Pulled latest changes from upstream` (or a similar, possibly more informative one) and click on the check mark icon to commit the changes to your fork. VS Code will warn you that you have not explicitly added any changes, but you can trust it to manage that for you.
+
+<<img src="./fig/VSCodePullUpstream04.png" width=90%/>
+
+Then a new text field will appear at the top asking you to *Sync Changes*. Click on it to push the changes to your fork on GitHub, and also click Ok when VS Code ask for confirmation.
+
+<<img src="./fig/VSCodePullUpstream05.png" width=90%/>
+
 
 ---
 
