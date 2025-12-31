@@ -138,7 +138,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#typical-workflow-for-each-session" id="toc-typical-workflow-for-each-session" class="nav-link" data-scroll-target="#typical-workflow-for-each-session">8. Typical Workflow for Each Session</a>
   <ul class="collapse">
   <li><a href="#preliminaries-get-the-jupyter-server-running-with-docker" id="toc-preliminaries-get-the-jupyter-server-running-with-docker" class="nav-link" data-scroll-target="#preliminaries-get-the-jupyter-server-running-with-docker">8.1 Preliminaries: get the Jupyter server running with Docker</a></li>
-  <li><a href="#update-course-files" id="toc-update-course-files" class="nav-link" data-scroll-target="#update-course-files">8.2 Update course files</a></li>
+  <li><a href="#update-course-files" id="toc-update-course-files" class="nav-link" data-scroll-target="#update-course-files">8.2 Update course files</a>
+  <ul class="collapse">
+  <li><a href="#using-github-desktop-1" id="toc-using-github-desktop-1" class="nav-link" data-scroll-target="#using-github-desktop-1">8.2.1. Using GitHub Desktop</a></li>
+  <li><a href="#using-vs-code-1" id="toc-using-vs-code-1" class="nav-link" data-scroll-target="#using-vs-code-1">8.2.2. Using VS Code</a></li>
+  </ul></li>
   <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">9. Troubleshooting</a>
   <ul class="collapse">
   <li><a href="#docker-permission-denied-linux-only" id="toc-docker-permission-denied-linux-only" class="nav-link" data-scroll-target="#docker-permission-denied-linux-only">9.1. “docker: permission denied” (Linux only)</a></li>
@@ -508,6 +512,19 @@ Keep terminal open
 <h2 class="anchored" data-anchor-id="open-a-notebook">7.2. Open a notebook</h2>
 <p>In the VS Code <em>Explorer</em> panel (the first icon on the left side bar). Navigate to <code>00_Setup</code> and open the <code>1_1_Introduction.ipynb</code> notebook file (click it). The file may look different in your computer, because of the extensions you have installed, but it should be similar to this:</p>
 <p><img src="./fig/Notebook_1_1_Introduction.png" width="70%/"></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Always make your own copy of the course notebooks!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before doing anything else, make sure you <strong>make a copy of the notebook</strong> to avoid modifying the original file. You can do this by right-clicking on the file in the Explorer panel and selecting <em>Copy</em>, then right-clicking again and selecting <em>Paste</em>. Rename the copied file to something like <code>1_1_Introduction_local.ipynb</code>.</p>
+</div>
+</div>
 </section>
 <section id="select-the-jupyter-server" class="level2">
 <h2 class="anchored" data-anchor-id="select-the-jupyter-server">7.3. Select the Jupyter server</h2>
@@ -560,25 +577,49 @@ Always update your fork before starting the session
 <p>In your case the upstream repository is the original course repository at</p>
 <p><a href="https://github.com/ML-MIC/MLMIIN.git">https://github.com/ML-MIC/MLMIIN.git</a></p>
 <p>When we update the course files (e.g.&nbsp;new notebooks, fixes, etc.) we will push them to that repository, and you will need to pull them into your fork before starting the session. The way to do that depends on how you plan to manage git:</p>
-<ul>
-<li>If you are using <em>GitHub Desktop</em>, make sure that your fork is selected as <em>Current Repository</em>. click on <em>Repository → Pull</em> and select <em>upstream/main</em> as the branch to pull from.<br>
-If you are using <strong>VS Code</strong>, click on the <strong>Version Control</strong> icon in the left sidebar, then click on the three dots at the top and select <em>Pull from…</em>, then choose <em>upstream/main</em>.<br>
-If you are using <strong>git command line</strong>, run:</li>
-</ul>
+<section id="using-github-desktop-1" class="level3">
+<h3 class="anchored" data-anchor-id="using-github-desktop-1">8.2.1. Using GitHub Desktop</h3>
+<p>In <em>GitHub Desktop</em>, make sure that your fork is selected as <em>Current Repository</em>.</p>
+<p><img src="./fig/GitHubDesktopCurrentRepo.png" width="50%/"></p>
+<p>Then click on <em>Repository → Open in Terminal</em> and wait for the terminal window to open. When it does, type</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull upstream main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>(You only need to set up the <em>upstream</em> remote once; if you haven’t done it yet, see the images below for instructions.)</p>
-<ol start="6" type="1">
-<li>Open a notebook (<code>.ipynb</code>). We strongly recommend that you start by making a copy<br>
-</li>
-<li>Make sure VS Code is connected to <code>http://localhost:8888</code> as the Jupyter server.</li>
-<li>Select the Python kernel and start running cells.</li>
-</ol>
-<p><img src="./fig/VSCodeVersionControlIcon.png" width="20%/"></p>
+<p>And wait for the operation to complete.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you have made changes in files that have also been modified in the upstream repository, you may see <strong>merge conflicts</strong>. In that case, contact your instructor for help. Also see below some tips to minimize the chances of conflicts.</p>
+</div>
+</div>
+</section>
+<section id="using-vs-code-1" class="level3">
+<h3 class="anchored" data-anchor-id="using-vs-code-1">8.2.2. Using VS Code</h3>
+<section id="add-the-upstream-remote-one-time" class="level4">
+<h4 class="anchored" data-anchor-id="add-the-upstream-remote-one-time">8.2.2.1 Add the upstream remote (one-time)</h4>
+<p>First you will need to add the <em>upstream</em> remote. <strong>But you only need to do this once!</strong> Start by clicking on the <strong>Source Control</strong> icon in the left sidebar. It looks like this</p>
+<p><img src="./fig/VSCodeVersionControlIcon.png" width="10%/"></p>
+<p>Then click on the three dots next to <em>Changes</em> and select <em>Remote → Add Remote…</em> as illustrated below:</p>
 <p><img src="./fig/VSCodeAddRemote01.png" width="70%/"></p>
+<p>You will see a text field at the top like this one:</p>
 <p><img src="./fig/VSCodeAddRemote02.png" width="90%/"></p>
+<p>Enter the URL for the <code>upstream</code> repository, which is</p>
+<p><a href="https://github.com/ML-MIC/MLMIIN.git">https://github.com/ML-MIC/MLMIIN.git</a></p>
+<p>and press Enter. When prompted for the remote name, enter <code>upstream</code> and press Enter again.</p>
 <p><img src="./fig/VSCodeAddRemote03.png" width="90%/"></p>
+</section>
+<section id="pull-from-upstream-every-session" class="level4">
+<h4 class="anchored" data-anchor-id="pull-from-upstream-every-session">8.2.2.2 Pull from upstream (every session)</h4>
+<p>At the beginning of each session you will need to pull the latest changes from upstream. To do so, click again on the <em>Source Control</em> icon in the left sidebar. Then click on the three dots next to <em>Changes</em> and select <em>Remote → Pull from</em> as illustrated below:</p>
 <p><img src="./fig/VSCodePullUpstream.png" width="90%/"></p>
 <hr>
+</section>
+</section>
 </section>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">9. Troubleshooting</h2>

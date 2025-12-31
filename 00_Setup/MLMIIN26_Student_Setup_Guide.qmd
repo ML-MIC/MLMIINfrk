@@ -416,6 +416,14 @@ In the VS Code *Explorer* panel (the first icon on the left side bar). Navigate 
 <img src="./fig/Notebook_1_1_Introduction.png" width=70%/>
 
 
+:::{.callout-important}
+
+##### Always make your own copy of the course notebooks!
+
+Before doing anything else, make sure you **make a copy of the notebook** to avoid modifying the original file. You can do this by right-clicking on the file in the Explorer panel and selecting *Copy*, then right-clicking again and selecting *Paste*. Rename the copied file to something like `1_1_Introduction_local.ipynb`.
+:::
+
+
 ## 7.3. Select the Jupyter server
 
 At the top-right corner of the notebook editor panel, you should see a **Select Kernel** button:
@@ -478,29 +486,53 @@ In your case the upstream repository is the original course repository at
 [https://github.com/ML-MIC/MLMIIN.git](https://github.com/ML-MIC/MLMIIN.git) 
 
 When we update the course files (e.g. new notebooks, fixes, etc.) we will push them to that repository, and you will need to pull them into your fork before starting the session. The way to do that depends on how you plan to manage git:
+
+### 8.2.1. Using GitHub Desktop
    
+In *GitHub Desktop*, make sure that your fork is selected as *Current Repository*. 
+
+<img src="./fig/GitHubDesktopCurrentRepo.png" width=50%/>
+
+
+Then click on *Repository → Open in Terminal* and wait for the terminal window to open. When it does, type 
+```bash
+git pull upstream main
+```
+And wait for the operation to complete. 
+
+:::{.callout-warning}
+If you have made changes in files that have also been modified in the upstream repository, you may see **merge conflicts**. In that case, contact your instructor for help. Also see below some tips to minimize the chances of conflicts.
+:::
+
+
+### 8.2.2. Using VS Code
    
-  + If you are using *GitHub Desktop*, make sure that your fork is selected as *Current Repository*. 
-  click on *Repository → Pull* and select *upstream/main* as the branch to pull from.  
-   If you are using **VS Code**, click on the **Version Control** icon in the left sidebar, then click on the three dots at the top and select *Pull from...*, then choose *upstream/main*.  
-   If you are using **git command line**, run:
-   ```bash
-   git pull upstream main
-   ```
-   (You only need to set up the *upstream* remote once; if you haven’t done it yet, see the images below for instructions.)
+#### 8.2.2.1 Add the upstream remote (one-time)
+   
+First you will need to add the *upstream* remote. **But you only need to do this once!** Start by clicking on the **Source Control** icon in the left sidebar. It looks like this
 
-6. Open a notebook (`.ipynb`). We strongly recommend that you start by making a copy  
-7. Make sure VS Code is connected to `http://localhost:8888` as the Jupyter server.
-8. Select the Python kernel and start running cells.
+<img src="./fig/VSCodeVersionControlIcon.png" width=10%/>
 
-
-<img src="./fig/VSCodeVersionControlIcon.png" width=20%/>
+Then click on the three dots next to *Changes* and select *Remote → Add Remote...* as illustrated below:
 
 <img src="./fig/VSCodeAddRemote01.png" width=70%/>
+   
+You will see a text field at the top like this one:
 
 <img src="./fig/VSCodeAddRemote02.png" width=90%/>
 
+Enter the URL for the `upstream` repository, which is 
+
+[https://github.com/ML-MIC/MLMIIN.git](https://github.com/ML-MIC/MLMIIN.git) 
+
+and press Enter. When prompted for the remote name, enter `upstream` and press Enter again.
+
 <img src="./fig/VSCodeAddRemote03.png" width=90%/>
+
+
+#### 8.2.2.2 Pull from upstream (every session)
+
+At the beginning of each session you will need to pull the latest changes from upstream. To do so, click again on the *Source Control* icon in the left sidebar. Then click on the three dots next to *Changes* and select *Remote → Pull from* as illustrated below:
 
 <img src="./fig/VSCodePullUpstream.png" width=90%/>
 
